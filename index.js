@@ -20,13 +20,13 @@ console.log('\nWelcome to HeartBank!\n');
 inquirer.prompt(questions).then(answers => {
   switch (answers.api) {
     case 'kiitos':
-      require('./api/kiitos.ai')();
+      require('./kiitos')();
       break;
     case 'wallet':
-      require('./api/bitcoin.wallet')();
+      require('./wallet')();
       break;
     case 'bank':
-      require('./api/family.bank')();
+      require('./bank')();
       break;
   }
 });
