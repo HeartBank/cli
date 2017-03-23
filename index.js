@@ -2,10 +2,7 @@
 
 const inquirer = require('inquirer');
 const storage = require('node-persist');
-
 const heartbank = require('heartbank')("lqs1plB1RzEFf084Wy7Y6Q==", "VAl8JAne4IPtAyD8JOkuehsxGDB9r1Co", "http://localhost:8080");
-//const heartbank = require('heartbank')("wkh7za2KISoJ9NemIFhzAQ==", "NJCd7GbpWSORUvVfPi9jGuiAv0uWT5n3"); //thon
-//const heartbank = require('heartbank')("TIuCTunzRdz+ML9F4EDy+Q==", "xkXIOk64AEtNFPNd78QhpvIoCEXU012S"); //jane
 
 const products = [
   {

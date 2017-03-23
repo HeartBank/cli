@@ -42,6 +42,18 @@ module.exports = (heartbank, storage) => {
           .then(data => console.log(JSON.stringify(data, null, ' ')));
         });
         break;
+      case 'verify':
+
+        break;
+      case 'send':
+
+        break;
+      case 'webhook':
+
+        break;
+      case 'withdraw':
+
+        break;
     }
   });
 }

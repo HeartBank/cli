@@ -6,7 +6,7 @@ const endpoints = [
   {
     type: 'list',
     name: 'service',
-    message: 'Which endpoint?',
+    message: 'Which API endpoint?',
     choices: [
       {name:"Clients", value:"clients"},
       {name:"Branches", value:"branches"},
