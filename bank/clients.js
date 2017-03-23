@@ -9,17 +9,26 @@ const clients = [
     message: 'What would you like to do?',
     choices: [
       {name:"Login a client", value:"login"},
-      {name:"Get all clients", value:"get"},
+      {name:"Get summary", value:"summary"},
       {name:"Refresh client session", value:"refresh"}
     ]
   }
 ];
 
 const login = [
-
+  {
+    type: 'input',
+    name: 'username',
+    message: "What's your username?"
+  },
+  {
+    type: 'password',
+    message: "What's the temporary passcode?",
+    name: 'passcode'
+  }
 ];
 
-const get = [];
+const summary = [];
 const refresh = [];
 
 module.exports = (heartbank, storage) => {
@@ -28,16 +37,16 @@ module.exports = (heartbank, storage) => {
       case 'login':
         inquirer.prompt(login).then(params => {
           heartbank.clients().auth(params.username, params.passcode).then(data => {
-            storage.setItemSync('client',data.client);
-            storage.setItemSync('token',data.token);
-            storage.setItemSync('branch',data.branch);
-            storage.setItemSync('customer',data.customer);
+            storage.setItemSync('client', data.client);
+            storage.setItemSync('token', data.token);
+            storage.setItemSync('branch', data.branch);
+            storage.setItemSync('customer', data.customer);
             console.log(JSON.stringify(data, null, ' '));
           });
         });
         break;
-      case 'get':
-        inquirer.prompt(get).then(params => {
+      case 'summary':
+        inquirer.prompt(summary).then(params => {
           heartbank.clients().get(storage.getItemSync('client'), storage.getItemSync('token'))
           .then(data => console.log(JSON.stringify(data, null, ' ')));
         });

@@ -8,7 +8,7 @@ const kindness = [
 ];
 
 module.exports = storage => {
-  inquirer.prompt(kindness).then(api => {
+  inquirer.prompt(kindness).then(service => {
     console.log('\nComing soon...\n');
   });
 }
