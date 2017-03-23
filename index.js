@@ -1,7 +1,11 @@
 'use strict';
 
 const inquirer = require('inquirer');
+const storage = require('node-persist');
+
 const heartbank = require('heartbank')("lqs1plB1RzEFf084Wy7Y6Q==", "VAl8JAne4IPtAyD8JOkuehsxGDB9r1Co", "http://localhost:8080");
+//const heartbank = require('heartbank')("wkh7za2KISoJ9NemIFhzAQ==", "NJCd7GbpWSORUvVfPi9jGuiAv0uWT5n3"); //thon
+//const heartbank = require('heartbank')("TIuCTunzRdz+ML9F4EDy+Q==", "xkXIOk64AEtNFPNd78QhpvIoCEXU012S"); //jane
 
 const products = [
   {
@@ -17,17 +21,18 @@ const products = [
 ];
 
 console.log('\nWelcome to HeartBank!\n');
+storage.initSync({dir:'storage'});
 
 inquirer.prompt(products).then(product => {
   switch (product.service) {
     case 'kiitos':
-      require('./kiitos')(heartbank);
+      require('./kiitos')(storage);
       break;
     case 'wallet':
-      require('./wallet')(heartbank);
+      require('./wallet')(heartbank, storage);
       break;
     case 'bank':
-      require('./bank')(heartbank);
+      require('./bank')(heartbank, storage);
       break;
   }
 });

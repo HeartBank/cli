@@ -23,7 +23,8 @@
   "homepage": "https://github.com/HeartBank/cli#readme",
   "dependencies": {
     "heartbank": "^0.2.7",
-    "inquirer": "^3.0.6"
+    "inquirer": "^3.0.6",
+    "node-persist": "^2.0.10"
   },
   "devDependencies": {
     "mocha": "^3.2.0"

@@ -20,15 +20,26 @@ const users = [
 
 const summary = [];
 const address = [];
+const verify = [];
+const send = [];
+const webhook = [];
+const withdraw = [];
 
-module.exports = heartbank => {
+module.exports = (heartbank, storage) => {
   inquirer.prompt(users).then(service => {
     switch (service.api) {
       case 'summary':
         inquirer.prompt(summary).then(params => {
-          heartbank.users().get()
-          .then(data => console.log(JSON.stringify(data, null, ' ')))
-          .catch(error => console.log(error));
+          heartbank.users().get().then(data => {
+            storage.setItemSync('user',data.user.id);
+            console.log(JSON.stringify(data, null, ' '));
+          });
+        });
+        break;
+      case 'address':
+        inquirer.prompt(address).then(params => {
+          heartbank.users().get(storage.getItemSync('user'))
+          .then(data => console.log(JSON.stringify(data, null, ' ')));
         });
         break;
     }

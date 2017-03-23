@@ -19,29 +19,29 @@ const endpoints = [
   }
 ];
 
-module.exports = heartbank => {
+module.exports = (heartbank, storage) => {
   inquirer.prompt(endpoints).then(endpoint => {
     switch (endpoint.service) {
       case 'clients':
-        require('./clients')(heartbank);
+        require('./clients')(heartbank, storage);
         break;
       case 'branches':
-        require('./branches')(heartbank);
+        require('./branches')(heartbank, storage);
         break;
       case 'customers':
-        require('./customers')(heartbank);
+        require('./customers')(heartbank, storage);
         break;
       case 'transactions':
-        require('./transactions')(heartbank);
+        require('./transactions')(heartbank, storage);
         break;
       case 'payments':
-        require('./payments')(heartbank);
+        require('./payments')(heartbank, storage);
         break;
       case 'recurrences':
-        require('./recurrences')(heartbank);
+        require('./recurrences')(heartbank, storage);
         break;
       case 'subscriptions':
-        require('./subscriptions')(heartbank);
+        require('./subscriptions')(heartbank, storage);
         break;
     }
   });
