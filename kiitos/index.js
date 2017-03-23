@@ -2,15 +2,12 @@
 
 const inquirer = require('inquirer');
 
-const questions = [
+const kiitos = [
 
 ];
 
-module.exports = () => {
-  console.log('\nOpen Kindness Data\n');
-  inquirer.prompt(questions).then(answers => {
-    //console.log('\nResponse:\n');
-    //console.log(JSON.stringify(answers, null, '  '));
+module.exports = heartbank => {
+  inquirer.prompt(kiitos).then(service => {
+    console.log('\nComing soon...\n');
   });
-  console.log('Coming soon...\n');
 }
